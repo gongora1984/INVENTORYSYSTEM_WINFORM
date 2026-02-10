@@ -12,6 +12,11 @@ public partial class MainForm : Form
         _inventoryService = inventoryService;
         InitializeComponent();
         
+        // Match window icon with application (EXE) icon
+        try {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        } catch { /* Fallback to default if extraction fails */ }
+
         // Load default screen
         ShowControl(new UCPos(_inventoryService));
     }
