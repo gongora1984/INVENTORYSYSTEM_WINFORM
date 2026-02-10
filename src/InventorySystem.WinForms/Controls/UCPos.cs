@@ -8,7 +8,7 @@ public class UCPos : UserControl
 {
     private readonly IInventoryService _inventoryService;
     private List<CartItem> _cart = new();
-    
+
     // Printing variables
     private string? _lastOrderNumber;
     private List<CartItem>? _lastOrderItems;
@@ -19,6 +19,11 @@ public class UCPos : UserControl
     private DataGridView dgvCart;
     private Label lblTotal;
     private Button btnCheckout;
+    private Label lblBarcode;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     private Label lblStatus;
 
     public UCPos(IInventoryService inventoryService)
@@ -29,68 +34,130 @@ public class UCPos : UserControl
 
     private void InitializeComponent()
     {
-        this.txtBarcode = new TextBox();
-        this.dgvCart = new DataGridView();
-        this.lblTotal = new Label();
-        this.btnCheckout = new Button();
-        this.lblStatus = new Label();
-        var lblBarcode = new Label();
-        
-        this.SuspendLayout();
-
-        // lblBarcode
-        lblBarcode.Text = "Scan Barcode:";
-        lblBarcode.Location = new Point(20, 20);
-        lblBarcode.AutoSize = true;
-
+        txtBarcode = new TextBox();
+        dgvCart = new DataGridView();
+        lblTotal = new Label();
+        btnCheckout = new Button();
+        lblStatus = new Label();
+        lblBarcode = new Label();
+        dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+        ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
+        SuspendLayout();
+        // 
         // txtBarcode
-        this.txtBarcode.Location = new Point(20, 45);
-        this.txtBarcode.Size = new Size(300, 30);
-        this.txtBarcode.Font = new Font("Segoe UI", 12F);
-        this.txtBarcode.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) HandleBarcode(); };
-
+        // 
+        txtBarcode.Font = new Font("Segoe UI", 12F);
+        txtBarcode.Location = new Point(20, 45);
+        txtBarcode.Name = "txtBarcode";
+        txtBarcode.Size = new Size(300, 34);
+        txtBarcode.TabIndex = 1;
+        txtBarcode.KeyDown += TxtBarcode_KeyDown;
+        // 
         // dgvCart
-        this.dgvCart.Location = new Point(20, 90);
-        this.dgvCart.Size = new Size(740, 400);
-        this.dgvCart.AllowUserToAddRows = false;
-        this.dgvCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        this.dgvCart.Columns.Add("Item", "Item");
-        this.dgvCart.Columns.Add("Price", "Price");
-        this.dgvCart.Columns.Add("Qty", "Qty");
-        this.dgvCart.Columns.Add("Total", "Total");
-
+        // 
+        dgvCart.AllowUserToAddRows = false;
+        dgvCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvCart.ColumnHeadersHeight = 29;
+        dgvCart.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+        dgvCart.Location = new Point(20, 90);
+        dgvCart.Name = "dgvCart";
+        dgvCart.RowHeadersWidth = 51;
+        dgvCart.Size = new Size(740, 400);
+        dgvCart.TabIndex = 2;
+        // 
         // lblTotal
-        this.lblTotal.Text = "Total: $0.00";
-        this.lblTotal.Location = new Point(550, 500);
-        this.lblTotal.Size = new Size(200, 30);
-        this.lblTotal.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-        this.lblTotal.TextAlign = ContentAlignment.TopRight;
-
+        // 
+        lblTotal.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+        lblTotal.Location = new Point(550, 500);
+        lblTotal.Name = "lblTotal";
+        lblTotal.Size = new Size(200, 30);
+        lblTotal.TabIndex = 3;
+        lblTotal.Text = "Total: $0.00";
+        lblTotal.TextAlign = ContentAlignment.TopRight;
+        // 
         // btnCheckout
-        this.btnCheckout.Text = "Checkout & Print";
-        this.btnCheckout.Location = new Point(20, 500);
-        this.btnCheckout.Size = new Size(200, 45);
-        this.btnCheckout.FlatStyle = FlatStyle.Flat;
-        this.btnCheckout.BackColor = Color.ForestGreen;
-        this.btnCheckout.ForeColor = Color.White;
-        this.btnCheckout.Click += (s, e) => Checkout();
-
+        // 
+        btnCheckout.BackColor = Color.ForestGreen;
+        btnCheckout.FlatStyle = FlatStyle.Flat;
+        btnCheckout.ForeColor = Color.White;
+        btnCheckout.Location = new Point(20, 500);
+        btnCheckout.Name = "btnCheckout";
+        btnCheckout.Size = new Size(241, 45);
+        btnCheckout.TabIndex = 4;
+        btnCheckout.Text = "Vender / Imprimir Recibo";
+        btnCheckout.UseVisualStyleBackColor = false;
+        btnCheckout.Click += BtnCheckout_Click;
+        // 
         // lblStatus
-        this.lblStatus.Location = new Point(20, 550);
-        this.lblStatus.Size = new Size(740, 30);
-        this.lblStatus.ForeColor = Color.Red;
+        // 
+        lblStatus.ForeColor = Color.Red;
+        lblStatus.Location = new Point(20, 550);
+        lblStatus.Name = "lblStatus";
+        lblStatus.Size = new Size(740, 30);
+        lblStatus.TabIndex = 5;
+        // 
+        // lblBarcode
+        // 
+        lblBarcode.AutoSize = true;
+        lblBarcode.Location = new Point(20, 20);
+        lblBarcode.Name = "lblBarcode";
+        lblBarcode.Size = new Size(129, 20);
+        lblBarcode.TabIndex = 0;
+        lblBarcode.Text = "Escanear Barcode:";
+        // 
+        // dataGridViewTextBoxColumn1
+        // 
+        dataGridViewTextBoxColumn1.HeaderText = "Producto";
+        dataGridViewTextBoxColumn1.MinimumWidth = 6;
+        dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+        // 
+        // dataGridViewTextBoxColumn2
+        // 
+        dataGridViewTextBoxColumn2.HeaderText = "Precio";
+        dataGridViewTextBoxColumn2.MinimumWidth = 6;
+        dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+        // 
+        // dataGridViewTextBoxColumn3
+        // 
+        dataGridViewTextBoxColumn3.HeaderText = "Cantidad";
+        dataGridViewTextBoxColumn3.MinimumWidth = 6;
+        dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+        // 
+        // dataGridViewTextBoxColumn4
+        // 
+        dataGridViewTextBoxColumn4.HeaderText = "Costo Total";
+        dataGridViewTextBoxColumn4.MinimumWidth = 6;
+        dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+        // 
+        // UCPos
+        // 
+        Controls.Add(lblBarcode);
+        Controls.Add(txtBarcode);
+        Controls.Add(dgvCart);
+        Controls.Add(lblTotal);
+        Controls.Add(btnCheckout);
+        Controls.Add(lblStatus);
+        Name = "UCPos";
+        Size = new Size(800, 600);
+        ((System.ComponentModel.ISupportInitialize)dgvCart).EndInit();
+        ResumeLayout(false);
+        PerformLayout();
+    }
 
-        this.Controls.Add(lblBarcode);
-        this.Controls.Add(txtBarcode);
-        this.Controls.Add(dgvCart);
-        this.Controls.Add(lblTotal);
-        this.Controls.Add(btnCheckout);
-        this.Controls.Add(lblStatus);
-        
-        this.Name = "UCPos";
-        this.Size = new Size(800, 600);
-        this.ResumeLayout(false);
-        this.PerformLayout();
+    private void TxtBarcode_KeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
+        {
+            HandleBarcode();
+        }
+    }
+
+    private void BtnCheckout_Click(object? sender, EventArgs e)
+    {
+        Checkout();
     }
 
     private async void HandleBarcode()
@@ -100,7 +167,7 @@ public class UCPos : UserControl
 
         lblStatus.Text = "";
         var product = await _inventoryService.GetProductByBarcodeAsync(barcode);
-        
+
         if (product != null)
         {
             AddToCart(product);
@@ -175,7 +242,7 @@ public class UCPos : UserControl
                 };
                 await _inventoryService.CreateMovementAsync(movement);
             }
-            
+
             _cart.Clear();
             UpdateGrid();
             lblStatus.Text = $"Sale {_lastOrderNumber} completed successfully! Printing...";
@@ -194,7 +261,7 @@ public class UCPos : UserControl
     {
         PrintDocument pd = new PrintDocument();
         pd.PrintPage += new PrintPageEventHandler(PrintPageHandler);
-        
+
         try
         {
             pd.Print();
@@ -211,7 +278,7 @@ public class UCPos : UserControl
         Font headerFont = new Font("Segoe UI", 16, FontStyle.Bold);
         Font subHeaderFont = new Font("Segoe UI", 10, FontStyle.Bold);
         Font bodyFont = new Font("Segoe UI", 10);
-        
+
         float y = 20;
         float leftMargin = 20;
         float centerOffset = e.PageBounds.Width / 2;
@@ -258,7 +325,7 @@ public class UCPos : UserControl
         string totalText = $"GRAND TOTAL: {_lastOrderTotal:C}";
         SizeF totalSize = g.MeasureString(totalText, subHeaderFont);
         g.DrawString(totalText, subHeaderFont, Brushes.Black, e.PageBounds.Width - totalSize.Width - 20, y);
-        
+
         y += 50;
         string footer = "Thank you for your business!";
         SizeF footerSize = g.MeasureString(footer, bodyFont);

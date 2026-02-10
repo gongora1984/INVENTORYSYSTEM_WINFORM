@@ -8,7 +8,7 @@ public class UCInventory : UserControl
 {
     private readonly IInventoryService _inventoryService;
     private IEnumerable<Product>? _products;
-    
+
     private DataGridView dgvProducts;
     private Button btnRefresh;
     private Button btnAdd;
@@ -27,23 +27,23 @@ public class UCInventory : UserControl
         this.btnRefresh = new Button();
         this.btnAdd = new Button();
         this.lblStatus = new Label();
-        
+
         this.SuspendLayout();
 
         // btnRefresh
-        this.btnRefresh.Text = "Refresh";
+        this.btnRefresh.Text = "Actualizar";
         this.btnRefresh.Location = new Point(20, 20);
         this.btnRefresh.Size = new Size(100, 35);
-        this.btnRefresh.Click += (s, e) => LoadProducts();
+        this.btnRefresh.Click += BtnRefresh_Click;
 
         // btnAdd
-        this.btnAdd.Text = "+ Add New Product";
+        this.btnAdd.Text = "+ Agregar Nuevo Producto";
         this.btnAdd.Location = new Point(130, 20);
         this.btnAdd.Size = new Size(160, 35);
         this.btnAdd.BackColor = Color.DodgerBlue;
         this.btnAdd.ForeColor = Color.White;
         this.btnAdd.FlatStyle = FlatStyle.Flat;
-        this.btnAdd.Click += (s, e) => ShowAddForm();
+        this.btnAdd.Click += BtnAdd_Click;
 
         // dgvProducts
         this.dgvProducts.Location = new Point(20, 70);
@@ -52,12 +52,12 @@ public class UCInventory : UserControl
         this.dgvProducts.ReadOnly = true;
         this.dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         this.dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        this.dgvProducts.CellDoubleClick += (s, e) => { if (e.RowIndex >= 0) ShowEditForm(); };
+        this.dgvProducts.CellDoubleClick += DgvProducts_CellDoubleClick;
 
         // lblStatus
         this.lblStatus.Location = new Point(20, 560);
         this.lblStatus.Size = new Size(740, 25);
-        this.lblStatus.Text = "Double-click a row to edit price.";
+        this.lblStatus.Text = "Double-click en fila para editar precio de venta.";
 
         this.Controls.Add(btnRefresh);
         this.Controls.Add(btnAdd);
@@ -69,19 +69,37 @@ public class UCInventory : UserControl
         this.ResumeLayout(false);
     }
 
+    private void BtnRefresh_Click(object? sender, EventArgs e)
+    {
+        LoadProducts();
+    }
+
+    private void BtnAdd_Click(object? sender, EventArgs e)
+    {
+        ShowAddForm();
+    }
+
+    private void DgvProducts_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex >= 0)
+        {
+            ShowEditForm();
+        }
+    }
+
     private async void LoadProducts()
     {
         try
         {
             _products = await _inventoryService.GetProductsAsync();
             dgvProducts.DataSource = _products.ToList();
-            
+
             // Customize columns
             if (dgvProducts.Columns["Id"] != null) dgvProducts.Columns["Id"].Visible = false;
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Error loading products: {ex.Message}");
+            MessageBox.Show($"Error cargando productos: {ex.Message}");
         }
     }
 
@@ -100,7 +118,7 @@ public class UCInventory : UserControl
     {
         if (dgvProducts.SelectedRows.Count == 0) return;
         var p = (Product)dgvProducts.SelectedRows[0].DataBoundItem;
-        
+
         using (var form = new ProductEditForm(p))
         {
             if (form.ShowDialog() == DialogResult.OK)
@@ -126,7 +144,7 @@ public class UCInventory : UserControl
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Error saving product: {ex.Message}");
+            MessageBox.Show($"Error salvando producto: {ex.Message}");
         }
     }
 }

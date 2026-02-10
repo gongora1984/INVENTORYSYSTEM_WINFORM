@@ -22,94 +22,114 @@ partial class MainForm
 
     private void InitializeComponent()
     {
-        this.pnlNavigation = new System.Windows.Forms.Panel();
-        this.pnlContent = new System.Windows.Forms.Panel();
-        this.btnPos = new System.Windows.Forms.Button();
-        this.btnInventory = new System.Windows.Forms.Button();
-        this.btnDailySales = new System.Windows.Forms.Button();
-        this.btnReceiveStock = new System.Windows.Forms.Button();
-        this.lblTitle = new System.Windows.Forms.Label();
-        this.pnlNavigation.SuspendLayout();
-        this.SuspendLayout();
-        
+        pnlNavigation = new Panel();
+        btnReceiveStock = new Button();
+        btnDailySales = new Button();
+        btnInventory = new Button();
+        btnPos = new Button();
+        lblTitle = new Label();
+        pnlContent = new Panel();
+        pnlNavigation.SuspendLayout();
+        SuspendLayout();
+        // 
         // pnlNavigation
-        this.pnlNavigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-        this.pnlNavigation.Controls.Add(this.btnReceiveStock);
-        this.pnlNavigation.Controls.Add(this.btnDailySales);
-        this.pnlNavigation.Controls.Add(this.btnInventory);
-        this.pnlNavigation.Controls.Add(this.btnPos);
-        this.pnlNavigation.Controls.Add(this.lblTitle);
-        this.pnlNavigation.Dock = System.Windows.Forms.DockStyle.Left;
-        this.pnlNavigation.Location = new System.Drawing.Point(0, 0);
-        this.pnlNavigation.Name = "pnlNavigation";
-        this.pnlNavigation.Size = new System.Drawing.Size(200, 600);
-        this.pnlNavigation.TabIndex = 0;
-        
-        // lblTitle
-        this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-        this.lblTitle.ForeColor = System.Drawing.Color.White;
-        this.lblTitle.Location = new System.Drawing.Point(12, 20);
-        this.lblTitle.Name = "lblTitle";
-        this.lblTitle.Size = new System.Drawing.Size(176, 80);
-        this.lblTitle.Text = "Inventory System";
-        this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-
-        // btnPos
-        this.btnPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnPos.ForeColor = System.Drawing.Color.White;
-        this.btnPos.Location = new System.Drawing.Point(10, 120);
-        this.btnPos.Name = "btnPos";
-        this.btnPos.Size = new System.Drawing.Size(180, 45);
-        this.btnPos.Text = "Point Of Sale";
-        this.btnPos.UseVisualStyleBackColor = true;
-        this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
-
-        // btnInventory
-        this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnInventory.ForeColor = System.Drawing.Color.White;
-        this.btnInventory.Location = new System.Drawing.Point(10, 175);
-        this.btnInventory.Name = "btnInventory";
-        this.btnInventory.Size = new System.Drawing.Size(180, 45);
-        this.btnInventory.Text = "Inventory";
-        this.btnInventory.UseVisualStyleBackColor = true;
-        this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
-
-        // btnDailySales
-        this.btnDailySales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnDailySales.ForeColor = System.Drawing.Color.White;
-        this.btnDailySales.Location = new System.Drawing.Point(10, 230);
-        this.btnDailySales.Name = "btnDailySales";
-        this.btnDailySales.Size = new System.Drawing.Size(180, 45);
-        this.btnDailySales.Text = "Daily Sales";
-        this.btnDailySales.UseVisualStyleBackColor = true;
-        this.btnDailySales.Click += new System.EventHandler(this.btnDailySales_Click);
-
+        // 
+        pnlNavigation.BackColor = Color.FromArgb(45, 45, 48);
+        pnlNavigation.Controls.Add(btnReceiveStock);
+        pnlNavigation.Controls.Add(btnDailySales);
+        pnlNavigation.Controls.Add(btnInventory);
+        pnlNavigation.Controls.Add(btnPos);
+        pnlNavigation.Controls.Add(lblTitle);
+        pnlNavigation.Dock = DockStyle.Left;
+        pnlNavigation.Location = new Point(0, 0);
+        pnlNavigation.Margin = new Padding(3, 4, 3, 4);
+        pnlNavigation.Name = "pnlNavigation";
+        pnlNavigation.Size = new Size(229, 800);
+        pnlNavigation.TabIndex = 0;
+        // 
         // btnReceiveStock
-        this.btnReceiveStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnReceiveStock.ForeColor = System.Drawing.Color.White;
-        this.btnReceiveStock.Location = new System.Drawing.Point(10, 285);
-        this.btnReceiveStock.Name = "btnReceiveStock";
-        this.btnReceiveStock.Size = new System.Drawing.Size(180, 45);
-        this.btnReceiveStock.Text = "Receive Stock";
-        this.btnReceiveStock.UseVisualStyleBackColor = true;
-        this.btnReceiveStock.Click += new System.EventHandler(this.btnReceiveStock_Click);
-
+        // 
+        btnReceiveStock.FlatStyle = FlatStyle.Flat;
+        btnReceiveStock.ForeColor = Color.White;
+        btnReceiveStock.Location = new Point(11, 380);
+        btnReceiveStock.Margin = new Padding(3, 4, 3, 4);
+        btnReceiveStock.Name = "btnReceiveStock";
+        btnReceiveStock.Size = new Size(206, 60);
+        btnReceiveStock.TabIndex = 0;
+        btnReceiveStock.Text = "Recibir Productos";
+        btnReceiveStock.UseVisualStyleBackColor = true;
+        btnReceiveStock.Click += btnReceiveStock_Click;
+        // 
+        // btnDailySales
+        // 
+        btnDailySales.FlatStyle = FlatStyle.Flat;
+        btnDailySales.ForeColor = Color.White;
+        btnDailySales.Location = new Point(11, 307);
+        btnDailySales.Margin = new Padding(3, 4, 3, 4);
+        btnDailySales.Name = "btnDailySales";
+        btnDailySales.Size = new Size(206, 60);
+        btnDailySales.TabIndex = 1;
+        btnDailySales.Text = "Ventas Diarias";
+        btnDailySales.UseVisualStyleBackColor = true;
+        btnDailySales.Click += btnDailySales_Click;
+        // 
+        // btnInventory
+        // 
+        btnInventory.FlatStyle = FlatStyle.Flat;
+        btnInventory.ForeColor = Color.White;
+        btnInventory.Location = new Point(11, 233);
+        btnInventory.Margin = new Padding(3, 4, 3, 4);
+        btnInventory.Name = "btnInventory";
+        btnInventory.Size = new Size(206, 60);
+        btnInventory.TabIndex = 2;
+        btnInventory.Text = "Inventario";
+        btnInventory.UseVisualStyleBackColor = true;
+        btnInventory.Click += btnInventory_Click;
+        // 
+        // btnPos
+        // 
+        btnPos.FlatStyle = FlatStyle.Flat;
+        btnPos.ForeColor = Color.White;
+        btnPos.Location = new Point(11, 160);
+        btnPos.Margin = new Padding(3, 4, 3, 4);
+        btnPos.Name = "btnPos";
+        btnPos.Size = new Size(206, 60);
+        btnPos.TabIndex = 3;
+        btnPos.Text = "Punto De Venta";
+        btnPos.UseVisualStyleBackColor = true;
+        btnPos.Click += btnPos_Click;
+        // 
+        // lblTitle
+        // 
+        lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+        lblTitle.ForeColor = Color.White;
+        lblTitle.Location = new Point(14, 27);
+        lblTitle.Name = "lblTitle";
+        lblTitle.Size = new Size(201, 107);
+        lblTitle.TabIndex = 4;
+        lblTitle.Text = "Inventory System";
+        lblTitle.TextAlign = ContentAlignment.TopCenter;
+        // 
         // pnlContent
-        this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.pnlContent.Location = new System.Drawing.Point(200, 0);
-        this.pnlContent.Name = "pnlContent";
-        this.pnlContent.Size = new System.Drawing.Size(800, 600);
-        this.pnlContent.TabIndex = 1;
-        
+        // 
+        pnlContent.Dock = DockStyle.Fill;
+        pnlContent.Location = new Point(229, 0);
+        pnlContent.Margin = new Padding(3, 4, 3, 4);
+        pnlContent.Name = "pnlContent";
+        pnlContent.Size = new Size(914, 800);
+        pnlContent.TabIndex = 1;
+        // 
         // MainForm
-        this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(1000, 600);
-        this.Controls.Add(this.pnlContent);
-        this.Controls.Add(this.pnlNavigation);
-        this.Name = "MainForm";
-        this.Text = "Inventory Management System";
-        this.pnlNavigation.ResumeLayout(false);
-        this.ResumeLayout(false);
+        // 
+        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1143, 800);
+        Controls.Add(pnlContent);
+        Controls.Add(pnlNavigation);
+        Margin = new Padding(3, 4, 3, 4);
+        Name = "MainForm";
+        Text = "Inventory Management System";
+        pnlNavigation.ResumeLayout(false);
+        ResumeLayout(false);
     }
 }
