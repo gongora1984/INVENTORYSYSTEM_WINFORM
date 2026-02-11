@@ -42,19 +42,17 @@ partial class MainForm
         pnlNavigation.Controls.Add(lblTitle);
         pnlNavigation.Dock = DockStyle.Left;
         pnlNavigation.Location = new Point(0, 0);
-        pnlNavigation.Margin = new Padding(3, 4, 3, 4);
         pnlNavigation.Name = "pnlNavigation";
-        pnlNavigation.Size = new Size(229, 800);
+        pnlNavigation.Size = new Size(200, 600);
         pnlNavigation.TabIndex = 0;
         // 
         // btnReceiveStock
         // 
         btnReceiveStock.FlatStyle = FlatStyle.Flat;
         btnReceiveStock.ForeColor = Color.White;
-        btnReceiveStock.Location = new Point(11, 380);
-        btnReceiveStock.Margin = new Padding(3, 4, 3, 4);
+        btnReceiveStock.Location = new Point(10, 285);
         btnReceiveStock.Name = "btnReceiveStock";
-        btnReceiveStock.Size = new Size(206, 60);
+        btnReceiveStock.Size = new Size(180, 45);
         btnReceiveStock.TabIndex = 0;
         btnReceiveStock.Text = "Recibir Productos";
         btnReceiveStock.UseVisualStyleBackColor = true;
@@ -64,10 +62,9 @@ partial class MainForm
         // 
         btnDailySales.FlatStyle = FlatStyle.Flat;
         btnDailySales.ForeColor = Color.White;
-        btnDailySales.Location = new Point(11, 307);
-        btnDailySales.Margin = new Padding(3, 4, 3, 4);
+        btnDailySales.Location = new Point(10, 230);
         btnDailySales.Name = "btnDailySales";
-        btnDailySales.Size = new Size(206, 60);
+        btnDailySales.Size = new Size(180, 45);
         btnDailySales.TabIndex = 1;
         btnDailySales.Text = "Ventas Diarias";
         btnDailySales.UseVisualStyleBackColor = true;
@@ -77,10 +74,9 @@ partial class MainForm
         // 
         btnInventory.FlatStyle = FlatStyle.Flat;
         btnInventory.ForeColor = Color.White;
-        btnInventory.Location = new Point(11, 233);
-        btnInventory.Margin = new Padding(3, 4, 3, 4);
+        btnInventory.Location = new Point(10, 175);
         btnInventory.Name = "btnInventory";
-        btnInventory.Size = new Size(206, 60);
+        btnInventory.Size = new Size(180, 45);
         btnInventory.TabIndex = 2;
         btnInventory.Text = "Inventario";
         btnInventory.UseVisualStyleBackColor = true;
@@ -90,10 +86,9 @@ partial class MainForm
         // 
         btnPos.FlatStyle = FlatStyle.Flat;
         btnPos.ForeColor = Color.White;
-        btnPos.Location = new Point(11, 160);
-        btnPos.Margin = new Padding(3, 4, 3, 4);
+        btnPos.Location = new Point(10, 120);
         btnPos.Name = "btnPos";
-        btnPos.Size = new Size(206, 60);
+        btnPos.Size = new Size(180, 45);
         btnPos.TabIndex = 3;
         btnPos.Text = "Punto De Venta";
         btnPos.UseVisualStyleBackColor = true;
@@ -103,9 +98,9 @@ partial class MainForm
         // 
         lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
         lblTitle.ForeColor = Color.White;
-        lblTitle.Location = new Point(14, 27);
+        lblTitle.Location = new Point(12, 20);
         lblTitle.Name = "lblTitle";
-        lblTitle.Size = new Size(201, 107);
+        lblTitle.Size = new Size(176, 80);
         lblTitle.TabIndex = 4;
         lblTitle.Text = "Inventory System";
         lblTitle.TextAlign = ContentAlignment.TopCenter;
@@ -113,22 +108,21 @@ partial class MainForm
         // pnlContent
         // 
         pnlContent.Dock = DockStyle.Fill;
-        pnlContent.Location = new Point(229, 0);
-        pnlContent.Margin = new Padding(3, 4, 3, 4);
+        pnlContent.Location = new Point(200, 0);
         pnlContent.Name = "pnlContent";
-        pnlContent.Size = new Size(914, 800);
+        pnlContent.Size = new Size(800, 600);
         pnlContent.TabIndex = 1;
         // 
         // MainForm
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1143, 800);
+        ClientSize = new Size(1000, 600);
         Controls.Add(pnlContent);
         Controls.Add(pnlNavigation);
-        Margin = new Padding(3, 4, 3, 4);
         Name = "MainForm";
         Text = "Inventory Management System";
+        WindowState = FormWindowState.Maximized;
         pnlNavigation.ResumeLayout(false);
         ResumeLayout(false);
     }
