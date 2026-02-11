@@ -11,6 +11,7 @@ public class AppDbContext : DbContext
 
     public DbSet<Product> Products { get; set; }
     public DbSet<StockMovement> StockMovements { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -35,7 +36,27 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Product>()
             .HasIndex(p => p.Barcode)
             .IsUnique();
+
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Username)
+            .IsUnique();
         
-        // No seed data for production standalone
+        // Initial seeding for Admin and Seller
+        modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = Guid.Parse("A1B2C3D4-E5F6-4A0B-8C9D-0E1F2A3B4C5D"),
+                Username = "admin",
+                PasswordPin = SecurityService.Encrypt("8604"),
+                Role = UserRole.Admin
+            },
+            new User
+            {
+                Id = Guid.Parse("B2C3D4E5-F6A7-4B1C-9D0E-1F2A3B4C5D6E"),
+                Username = "seller",
+                PasswordPin = SecurityService.Encrypt("1234"),
+                Role = UserRole.Seller
+            }
+        );
     }
 }

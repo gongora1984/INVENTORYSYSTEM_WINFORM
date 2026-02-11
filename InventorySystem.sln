@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventorySystem.Infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventorySystem.WinForms", "src\InventorySystem.WinForms\InventorySystem.WinForms.csproj", "{4003A92E-F3A0-4B2D-8186-7E8A434CE698}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.txt = Readme.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,5 +70,8 @@ Global
 		{063D3ACF-C560-4D30-A5D3-4CDE2148B298} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{E2C92C00-2712-4D94-B7E7-934107225F52} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{4003A92E-F3A0-4B2D-8186-7E8A434CE698} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64FC806A-9F4C-4EF7-9B2D-3A88C0E2A10B}
 	EndGlobalSection
 EndGlobal

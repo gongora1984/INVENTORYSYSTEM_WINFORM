@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace InventorySystem.WinForms.Services;
+namespace InventorySystem.Shared;
 
 public static class SecurityService
 {

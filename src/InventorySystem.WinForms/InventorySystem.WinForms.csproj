@@ -31,9 +31,14 @@
     <Content Include="ApplicationMainIcon.ico" />
   </ItemGroup>
 
-  <Target Name="EncryptAppSettings" AfterTargets="Publish">
-    <Message Text="Automating Connection String Encryption..." Importance="high" />
+  <Target Name="EncryptAppSettingsOnPublish" AfterTargets="Publish">
+    <Message Text="Automating Connection String Encryption on Publish..." Importance="high" />
     <Exec Command="powershell.exe -ExecutionPolicy Bypass -File &quot;$(ProjectDir)EncryptConfig.ps1&quot; &quot;$(PublishDir)&quot;" />
+  </Target>
+
+  <Target Name="EncryptAppSettingsOnBuild" AfterTargets="AfterBuild">
+    <Message Text="Automating Connection String Encryption on Build..." Importance="high" />
+    <Exec Command="powershell.exe -ExecutionPolicy Bypass -File &quot;$(ProjectDir)EncryptConfig.ps1&quot; &quot;$(TargetDir)&quot;" />
   </Target>
 
 </Project>

@@ -8,6 +8,26 @@ public enum MovementType
     Out,
     Adjustment
 }
+
+public enum UserRole
+{
+    Admin,
+    Seller
+}
+
+public class User
+{
+    public Guid Id { get; set; }
+    
+    [Required(ErrorMessage = "Username is required")]
+    public string Username { get; set; } = string.Empty;
+    
+    [Required(ErrorMessage = "Password PIN is required")]
+    public string PasswordPin { get; set; } = string.Empty;
+    
+    public UserRole Role { get; set; }
+}
+
 public class Product
 {
     public Guid Id { get; set; }

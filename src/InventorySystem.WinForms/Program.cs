@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using InventorySystem.Infrastructure.Data;
 using InventorySystem.WinForms.Services;
+using InventorySystem.Shared;
 
 namespace InventorySystem.WinForms;
 
@@ -49,19 +50,38 @@ static class Program
 
                     services.AddScoped<IInventoryService, InventoryService>();
                     services.AddTransient<MainForm>();
+                    services.AddTransient<Forms.LoginForm>();
                 })
                 .Build();
 
             ServiceProvider = host.Services;
 
-            // Ensure database is created
+            // [MIGRATIONS NOTE]
+            // We removed EnsureCreated() because we are now using EF Core Migrations.
+            // Please run 'dotnet ef database update' (or use Package Manager Console) to apply migrations to your server.
+            /*
             using (var scope = ServiceProvider.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 db.Database.EnsureCreated();
             }
+            */
 
-            Application.Run(ServiceProvider.GetRequiredService<MainForm>());
+            // Show Login Form
+            using (var scope = ServiceProvider.CreateScope())
+            {
+                var loginForm = scope.ServiceProvider.GetRequiredService<Forms.LoginForm>();
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    var mainForm = ServiceProvider.GetRequiredService<MainForm>();
+                    mainForm.SetUser(loginForm.AuthenticatedUser!);
+                    Application.Run(mainForm);
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
         catch (Exception ex)
         {

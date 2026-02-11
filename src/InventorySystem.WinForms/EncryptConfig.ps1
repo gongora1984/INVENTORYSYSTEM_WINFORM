@@ -38,16 +38,37 @@ function Encrypt-String($plainText) {
     return [Convert]::ToBase64String($bytes)
 }
 
-# Read JSON
-$json = Get-Content $configPath -Raw | ConvertFrom-Json
+# Read JSON and strip comments (simple regex for // comments)
+try {
+    $rawJson = Get-Content $configPath -Raw
+    $cleanJson = $rawJson -replace '(?m)^\s*//.*$', '' -replace '(?m)\s*//.*$', ''
+    $json = $cleanJson | ConvertFrom-Json
+} catch {
+    Write-Host "Error parsing appsettings.json. Please ensure it's valid JSON. Detail: $($_.Exception.Message)" -ForegroundColor Red
+    exit 1
+}
+
+if ($null -eq $json.ConnectionStrings) {
+    Write-Host "No ConnectionStrings section found in appsettings.json" -ForegroundColor Gray
+    exit 0
+}
+
 $connString = $json.ConnectionStrings.DefaultConnection
 
-# Encrypt if it looks like a plain connection string
-if ($connString -and $connString.ToLower().Contains("server=")) {
+# Encrypt if it looks like a plain connection string (contains server or data source)
+if ($connString -and ($connString.ToLower().Contains("server=") -or $connString.ToLower().Contains("data source=") -or $connString.ToLower().Contains("initial catalog="))) {
+    Write-Host "Plain text connection string found. Encrypting..." -ForegroundColor Cyan
     $encrypted = Encrypt-String $connString
     $json.ConnectionStrings.DefaultConnection = $encrypted
-    $json | ConvertTo-Json -Depth 10 | Set-Content $configPath
-    Write-Host "Successfully encrypted connection string." -ForegroundColor Green
+    
+    # Save back to file
+    try {
+        $json | ConvertTo-Json -Depth 10 | Set-Content $configPath
+        Write-Host "Successfully encrypted connection string." -ForegroundColor Green
+    } catch {
+        Write-Host "Error saving encrypted appsettings.json: $($_.Exception.Message)" -ForegroundColor Red
+        exit 1
+    }
 } else {
-    Write-Host "Connection string already encrypted or missing." -ForegroundColor Gray
+    Write-Host "Connection string already encrypted or no plain-text pattern found." -ForegroundColor Gray
 }

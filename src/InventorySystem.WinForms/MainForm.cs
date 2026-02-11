@@ -1,11 +1,13 @@
 using InventorySystem.WinForms.Services;
 using InventorySystem.WinForms.Controls;
+using InventorySystem.Shared;
 
 namespace InventorySystem.WinForms;
 
 public partial class MainForm : Form
 {
     private readonly IInventoryService _inventoryService;
+    private User _currentUser;
 
     public MainForm(IInventoryService inventoryService)
     {
@@ -16,9 +18,29 @@ public partial class MainForm : Form
         try {
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         } catch { /* Fallback to default if extraction fails */ }
+    }
 
+    public void SetUser(User user)
+    {
+        _currentUser = user;
+        ApplyUserPermissions();
+        
         // Load default screen
         ShowControl(new UCPos(_inventoryService));
+    }
+
+    private void ApplyUserPermissions()
+    {
+        if (_currentUser.Role == UserRole.Seller)
+        {
+            // If user is a seller, only POS is visible
+            btnInventory.Visible = false;
+            btnDailySales.Visible = false;
+            btnReceiveStock.Visible = false;
+            
+            // Re-position btnPos if needed or just leave it
+        }
+        // Admin sees everything (default)
     }
 
     private void ShowControl(UserControl control)
