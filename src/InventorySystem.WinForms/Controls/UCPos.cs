@@ -104,8 +104,9 @@ public class UCPos : UserControl
         // 
         // btnCheckout
         // 
-        btnCheckout.BackColor = Color.ForestGreen;
+        btnCheckout.BackColor = Color.Green;
         btnCheckout.FlatStyle = FlatStyle.Flat;
+        btnCheckout.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnCheckout.ForeColor = Color.White;
         btnCheckout.Location = new Point(20, 500);
         btnCheckout.Name = "btnCheckout";

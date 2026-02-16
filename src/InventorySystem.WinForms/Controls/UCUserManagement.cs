@@ -61,7 +61,7 @@ public class UCUserManagement : UserControl
         // btnAdd
         // 
         btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        btnAdd.BackColor = Color.FromArgb(40, 167, 69);
+        btnAdd.BackColor = Color.Green;
         btnAdd.FlatStyle = FlatStyle.Flat;
         btnAdd.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnAdd.ForeColor = Color.White;
@@ -76,7 +76,7 @@ public class UCUserManagement : UserControl
         // btnEdit
         // 
         btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        btnEdit.BackColor = Color.FromArgb(0, 122, 204);
+        btnEdit.BackColor = Color.DodgerBlue;
         btnEdit.FlatStyle = FlatStyle.Flat;
         btnEdit.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnEdit.ForeColor = Color.White;
@@ -91,7 +91,7 @@ public class UCUserManagement : UserControl
         // btnDelete
         // 
         btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        btnDelete.BackColor = Color.FromArgb(220, 53, 69);
+        btnDelete.BackColor = Color.Brown;
         btnDelete.FlatStyle = FlatStyle.Flat;
         btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnDelete.ForeColor = Color.White;

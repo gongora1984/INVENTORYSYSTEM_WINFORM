@@ -47,8 +47,9 @@ public class UCInventory : UserControl
         // 
         // btnRefresh
         // 
-        btnRefresh.BackColor = Color.YellowGreen;
-        btnRefresh.ForeColor = SystemColors.ActiveCaptionText;
+        btnRefresh.BackColor = Color.Green;
+        btnRefresh.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+        btnRefresh.ForeColor = Color.White;
         btnRefresh.Location = new Point(20, 20);
         btnRefresh.Name = "btnRefresh";
         btnRefresh.Size = new Size(100, 35);
@@ -61,6 +62,7 @@ public class UCInventory : UserControl
         // 
         btnAdd.BackColor = Color.DodgerBlue;
         btnAdd.FlatStyle = FlatStyle.Flat;
+        btnAdd.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnAdd.ForeColor = Color.White;
         btnAdd.Location = new Point(130, 20);
         btnAdd.Name = "btnAdd";

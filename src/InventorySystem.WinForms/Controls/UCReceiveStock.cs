@@ -131,8 +131,9 @@ public class UCReceiveStock : UserControl
         // 
         // btnSave
         // 
-        btnSave.BackColor = Color.ForestGreen;
+        btnSave.BackColor = Color.Green;
         btnSave.FlatStyle = FlatStyle.Flat;
+        btnSave.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnSave.ForeColor = Color.White;
         btnSave.Location = new Point(20, 368);
         btnSave.Name = "btnSave";
@@ -146,6 +147,7 @@ public class UCReceiveStock : UserControl
         // 
         btnAddNewProduct.BackColor = Color.DodgerBlue;
         btnAddNewProduct.FlatStyle = FlatStyle.Flat;
+        btnAddNewProduct.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnAddNewProduct.ForeColor = Color.White;
         btnAddNewProduct.Location = new Point(20, 134);
         btnAddNewProduct.Name = "btnAddNewProduct";

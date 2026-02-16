@@ -37,18 +37,18 @@ partial class LoginForm
         lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
         lblTitle.Location = new Point(57, 27);
         lblTitle.Name = "lblTitle";
-        lblTitle.Size = new Size(242, 41);
+        lblTitle.Size = new Size(218, 41);
         lblTitle.TabIndex = 0;
-        lblTitle.Text = "Inventory Login";
+        lblTitle.Text = "Iniciar Session";
         // 
         // lblUsername
         // 
         lblUsername.AutoSize = true;
         lblUsername.Location = new Point(34, 107);
         lblUsername.Name = "lblUsername";
-        lblUsername.Size = new Size(78, 20);
+        lblUsername.Size = new Size(62, 20);
         lblUsername.TabIndex = 1;
-        lblUsername.Text = "Username:";
+        lblUsername.Text = "Usuario:";
         // 
         // txtUsername
         // 
@@ -78,23 +78,25 @@ partial class LoginForm
         // 
         // btnLogin
         // 
-        btnLogin.BackColor = Color.FromArgb(0, 122, 204);
+        btnLogin.BackColor = Color.DodgerBlue;
         btnLogin.FlatStyle = FlatStyle.Flat;
+        btnLogin.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
         btnLogin.ForeColor = Color.White;
         btnLogin.Location = new Point(34, 280);
         btnLogin.Margin = new Padding(3, 4, 3, 4);
         btnLogin.Name = "btnLogin";
         btnLogin.Size = new Size(126, 47);
         btnLogin.TabIndex = 5;
-        btnLogin.Text = "Login";
+        btnLogin.Text = "Iniciar";
         btnLogin.UseVisualStyleBackColor = false;
         btnLogin.Click += btnLogin_Click;
         // 
         // btnCancel
         // 
-        btnCancel.BackColor = Color.Tomato;
+        btnCancel.BackColor = Color.Brown;
         btnCancel.FlatStyle = FlatStyle.Flat;
-        btnCancel.ForeColor = SystemColors.ActiveCaptionText;
+        btnCancel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+        btnCancel.ForeColor = Color.White;
         btnCancel.Location = new Point(183, 280);
         btnCancel.Margin = new Padding(3, 4, 3, 4);
         btnCancel.Name = "btnCancel";
@@ -124,7 +126,7 @@ partial class LoginForm
         MinimizeBox = false;
         Name = "LoginForm";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "Login - Inventory System";
+        Text = "Iniciar Session";
         ResumeLayout(false);
         PerformLayout();
     }
