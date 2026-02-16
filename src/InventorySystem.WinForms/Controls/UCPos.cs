@@ -36,14 +36,14 @@ public class UCPos : UserControl
     {
         txtBarcode = new TextBox();
         dgvCart = new DataGridView();
-        lblTotal = new Label();
-        btnCheckout = new Button();
-        lblStatus = new Label();
-        lblBarcode = new Label();
         dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+        lblTotal = new Label();
+        btnCheckout = new Button();
+        lblStatus = new Label();
+        lblBarcode = new Label();
         ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
         SuspendLayout();
         // 
@@ -65,13 +65,37 @@ public class UCPos : UserControl
         dgvCart.Location = new Point(20, 90);
         dgvCart.Name = "dgvCart";
         dgvCart.RowHeadersWidth = 51;
-        dgvCart.Size = new Size(740, 400);
+        dgvCart.Size = new Size(1350, 400);
         dgvCart.TabIndex = 2;
+        // 
+        // dataGridViewTextBoxColumn1
+        // 
+        dataGridViewTextBoxColumn1.HeaderText = "Producto";
+        dataGridViewTextBoxColumn1.MinimumWidth = 6;
+        dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+        // 
+        // dataGridViewTextBoxColumn2
+        // 
+        dataGridViewTextBoxColumn2.HeaderText = "Precio";
+        dataGridViewTextBoxColumn2.MinimumWidth = 6;
+        dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+        // 
+        // dataGridViewTextBoxColumn3
+        // 
+        dataGridViewTextBoxColumn3.HeaderText = "Cantidad";
+        dataGridViewTextBoxColumn3.MinimumWidth = 6;
+        dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+        // 
+        // dataGridViewTextBoxColumn4
+        // 
+        dataGridViewTextBoxColumn4.HeaderText = "Costo Total";
+        dataGridViewTextBoxColumn4.MinimumWidth = 6;
+        dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
         // 
         // lblTotal
         // 
         lblTotal.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-        lblTotal.Location = new Point(550, 500);
+        lblTotal.Location = new Point(1170, 503);
         lblTotal.Name = "lblTotal";
         lblTotal.Size = new Size(200, 30);
         lblTotal.TabIndex = 3;
@@ -108,30 +132,6 @@ public class UCPos : UserControl
         lblBarcode.TabIndex = 0;
         lblBarcode.Text = "Escanear Barcode:";
         // 
-        // dataGridViewTextBoxColumn1
-        // 
-        dataGridViewTextBoxColumn1.HeaderText = "Producto";
-        dataGridViewTextBoxColumn1.MinimumWidth = 6;
-        dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-        // 
-        // dataGridViewTextBoxColumn2
-        // 
-        dataGridViewTextBoxColumn2.HeaderText = "Precio";
-        dataGridViewTextBoxColumn2.MinimumWidth = 6;
-        dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-        // 
-        // dataGridViewTextBoxColumn3
-        // 
-        dataGridViewTextBoxColumn3.HeaderText = "Cantidad";
-        dataGridViewTextBoxColumn3.MinimumWidth = 6;
-        dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-        // 
-        // dataGridViewTextBoxColumn4
-        // 
-        dataGridViewTextBoxColumn4.HeaderText = "Costo Total";
-        dataGridViewTextBoxColumn4.MinimumWidth = 6;
-        dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-        // 
         // UCPos
         // 
         Controls.Add(lblBarcode);
@@ -141,7 +141,7 @@ public class UCPos : UserControl
         Controls.Add(btnCheckout);
         Controls.Add(lblStatus);
         Name = "UCPos";
-        Size = new Size(800, 600);
+        Size = new Size(1553, 600);
         ((System.ComponentModel.ISupportInitialize)dgvCart).EndInit();
         ResumeLayout(false);
         PerformLayout();

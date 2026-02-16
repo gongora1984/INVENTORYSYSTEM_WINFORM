@@ -9,6 +9,9 @@ partial class MainForm
     private System.Windows.Forms.Button btnInventory;
     private System.Windows.Forms.Button btnDailySales;
     private System.Windows.Forms.Button btnReceiveStock;
+    private System.Windows.Forms.Button btnUsers;
+    private System.Windows.Forms.Button btnLogout;
+    private System.Windows.Forms.Button btnExit;
     private System.Windows.Forms.Label lblTitle;
 
     protected override void Dispose(bool disposing)
@@ -27,6 +30,9 @@ partial class MainForm
         btnDailySales = new Button();
         btnInventory = new Button();
         btnPos = new Button();
+        btnUsers = new Button();
+        btnLogout = new Button();
+        btnExit = new Button();
         lblTitle = new Label();
         pnlContent = new Panel();
         pnlNavigation.SuspendLayout();
@@ -35,6 +41,9 @@ partial class MainForm
         // pnlNavigation
         // 
         pnlNavigation.BackColor = Color.FromArgb(45, 45, 48);
+        pnlNavigation.Controls.Add(btnExit);
+        pnlNavigation.Controls.Add(btnLogout);
+        pnlNavigation.Controls.Add(btnUsers);
         pnlNavigation.Controls.Add(btnReceiveStock);
         pnlNavigation.Controls.Add(btnDailySales);
         pnlNavigation.Controls.Add(btnInventory);
@@ -57,6 +66,18 @@ partial class MainForm
         btnReceiveStock.Text = "Recibir Productos";
         btnReceiveStock.UseVisualStyleBackColor = true;
         btnReceiveStock.Click += btnReceiveStock_Click;
+        // 
+        // btnUsers
+        // 
+        btnUsers.FlatStyle = FlatStyle.Flat;
+        btnUsers.ForeColor = Color.White;
+        btnUsers.Location = new Point(10, 340);
+        btnUsers.Name = "btnUsers";
+        btnUsers.Size = new Size(180, 45);
+        btnUsers.TabIndex = 5;
+        btnUsers.Text = "Usuarios";
+        btnUsers.UseVisualStyleBackColor = true;
+        btnUsers.Click += btnUsers_Click;
         // 
         // btnDailySales
         // 
@@ -93,6 +114,32 @@ partial class MainForm
         btnPos.Text = "Punto De Venta";
         btnPos.UseVisualStyleBackColor = true;
         btnPos.Click += btnPos_Click;
+        // 
+        // btnLogout
+        // 
+        btnLogout.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnLogout.FlatStyle = FlatStyle.Flat;
+        btnLogout.ForeColor = Color.White;
+        btnLogout.Location = new Point(10, 500);
+        btnLogout.Name = "btnLogout";
+        btnLogout.Size = new Size(180, 40);
+        btnLogout.TabIndex = 6;
+        btnLogout.Text = "Cerrar Sesión";
+        btnLogout.UseVisualStyleBackColor = true;
+        btnLogout.Click += btnLogout_Click;
+        // 
+        // btnExit
+        // 
+        btnExit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnExit.FlatStyle = FlatStyle.Flat;
+        btnExit.ForeColor = Color.IndianRed;
+        btnExit.Location = new Point(10, 550);
+        btnExit.Name = "btnExit";
+        btnExit.Size = new Size(180, 40);
+        btnExit.TabIndex = 7;
+        btnExit.Text = "Salir";
+        btnExit.UseVisualStyleBackColor = true;
+        btnExit.Click += btnExit_Click;
         // 
         // lblTitle
         // 

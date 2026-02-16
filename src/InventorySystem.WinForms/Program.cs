@@ -67,19 +67,33 @@ static class Program
             }
             */
 
-            // Show Login Form
-            using (var scope = ServiceProvider.CreateScope())
+            bool restartApp = true;
+            while (restartApp)
             {
-                var loginForm = scope.ServiceProvider.GetRequiredService<Forms.LoginForm>();
-                if (loginForm.ShowDialog() == DialogResult.OK)
+                restartApp = false;
+                // Show Login Form
+                using (var scope = ServiceProvider.CreateScope())
                 {
-                    var mainForm = ServiceProvider.GetRequiredService<MainForm>();
-                    mainForm.SetUser(loginForm.AuthenticatedUser!);
-                    Application.Run(mainForm);
-                }
-                else
-                {
-                    Application.Exit();
+                    var loginForm = scope.ServiceProvider.GetRequiredService<Forms.LoginForm>();
+                    if (loginForm.ShowDialog() == DialogResult.OK)
+                    {
+                        var mainForm = ServiceProvider.GetRequiredService<MainForm>();
+                        mainForm.SetUser(loginForm.AuthenticatedUser!);
+                        
+                        DialogResult result = mainForm.ShowDialog();
+                        if (result == DialogResult.Retry)
+                        {
+                            restartApp = true;
+                        }
+                        else
+                        {
+                            Application.Exit();
+                        }
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
                 }
             }
         }

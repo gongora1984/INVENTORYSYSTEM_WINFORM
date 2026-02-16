@@ -37,6 +37,7 @@ public partial class MainForm : Form
             btnInventory.Visible = false;
             btnDailySales.Visible = false;
             btnReceiveStock.Visible = false;
+            btnUsers.Visible = false;
             
             // Re-position btnPos if needed or just leave it
         }
@@ -68,5 +69,31 @@ public partial class MainForm : Form
     private void btnReceiveStock_Click(object sender, EventArgs e)
     {
         ShowControl(new UCReceiveStock(_inventoryService));
+    }
+
+    private void btnUsers_Click(object sender, EventArgs e)
+    {
+        ShowControl(new UCUserManagement(_inventoryService));
+    }
+
+    private void btnLogout_Click(object sender, EventArgs e)
+    {
+        var result = MessageBox.Show("¿Está seguro de que desea cerrar la sesión?", "Confirmar Cierre de Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        
+        if (result == DialogResult.Yes)
+        {
+            this.DialogResult = DialogResult.Retry;
+            this.Close();
+        }
+    }
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        var result = MessageBox.Show("¿Está seguro de que desea salir de la aplicación?", "Confirmar Salida", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        
+        if (result == DialogResult.Yes)
+        {
+            Application.Exit();
+        }
     }
 }

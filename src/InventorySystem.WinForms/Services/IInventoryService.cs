@@ -14,4 +14,10 @@ public interface IInventoryService
     // Stock & Movements
     Task<StockMovement> CreateMovementAsync(StockMovement movement);
     Task<IEnumerable<StockMovement>> GetDailySalesAsync(DateTime date);
+
+    // User Management
+    Task<IEnumerable<User>> GetUsersAsync();
+    Task CreateUserAsync(User user);
+    Task UpdateUserAsync(User user);
+    Task DeleteUserAsync(Guid id);
 }

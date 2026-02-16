@@ -23,50 +23,71 @@ public class UCInventory : UserControl
 
     private void InitializeComponent()
     {
-        this.dgvProducts = new DataGridView();
-        this.btnRefresh = new Button();
-        this.btnAdd = new Button();
-        this.lblStatus = new Label();
-
-        this.SuspendLayout();
-
-        // btnRefresh
-        this.btnRefresh.Text = "Actualizar";
-        this.btnRefresh.Location = new Point(20, 20);
-        this.btnRefresh.Size = new Size(100, 35);
-        this.btnRefresh.Click += BtnRefresh_Click;
-
-        // btnAdd
-        this.btnAdd.Text = "+ Agregar Nuevo Producto";
-        this.btnAdd.Location = new Point(130, 20);
-        this.btnAdd.Size = new Size(160, 35);
-        this.btnAdd.BackColor = Color.DodgerBlue;
-        this.btnAdd.ForeColor = Color.White;
-        this.btnAdd.FlatStyle = FlatStyle.Flat;
-        this.btnAdd.Click += BtnAdd_Click;
-
+        dgvProducts = new DataGridView();
+        btnRefresh = new Button();
+        btnAdd = new Button();
+        lblStatus = new Label();
+        ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
+        SuspendLayout();
+        // 
         // dgvProducts
-        this.dgvProducts.Location = new Point(20, 70);
-        this.dgvProducts.Size = new Size(740, 480);
-        this.dgvProducts.AllowUserToAddRows = false;
-        this.dgvProducts.ReadOnly = true;
-        this.dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        this.dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        this.dgvProducts.CellDoubleClick += DgvProducts_CellDoubleClick;
-
+        // 
+        dgvProducts.AllowUserToAddRows = false;
+        dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvProducts.BackgroundColor = Color.White;
+        dgvProducts.ColumnHeadersHeight = 29;
+        dgvProducts.Location = new Point(20, 70);
+        dgvProducts.Name = "dgvProducts";
+        dgvProducts.ReadOnly = true;
+        dgvProducts.RowHeadersWidth = 51;
+        dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dgvProducts.Size = new Size(1350, 480);
+        dgvProducts.TabIndex = 2;
+        dgvProducts.CellDoubleClick += DgvProducts_CellDoubleClick;
+        // 
+        // btnRefresh
+        // 
+        btnRefresh.BackColor = Color.YellowGreen;
+        btnRefresh.ForeColor = SystemColors.ActiveCaptionText;
+        btnRefresh.Location = new Point(20, 20);
+        btnRefresh.Name = "btnRefresh";
+        btnRefresh.Size = new Size(100, 35);
+        btnRefresh.TabIndex = 0;
+        btnRefresh.Text = "Actualizar";
+        btnRefresh.UseVisualStyleBackColor = false;
+        btnRefresh.Click += BtnRefresh_Click;
+        // 
+        // btnAdd
+        // 
+        btnAdd.BackColor = Color.DodgerBlue;
+        btnAdd.FlatStyle = FlatStyle.Flat;
+        btnAdd.ForeColor = Color.White;
+        btnAdd.Location = new Point(130, 20);
+        btnAdd.Name = "btnAdd";
+        btnAdd.Size = new Size(160, 35);
+        btnAdd.TabIndex = 1;
+        btnAdd.Text = "+ Agregar Nuevo Producto";
+        btnAdd.UseVisualStyleBackColor = false;
+        btnAdd.Click += BtnAdd_Click;
+        // 
         // lblStatus
-        this.lblStatus.Location = new Point(20, 560);
-        this.lblStatus.Size = new Size(740, 25);
-        this.lblStatus.Text = "Double-click en fila para editar precio de venta.";
-
-        this.Controls.Add(btnRefresh);
-        this.Controls.Add(btnAdd);
-        this.Controls.Add(dgvProducts);
-        this.Controls.Add(lblStatus);
-
-        this.Name = "UCInventory";
-        this.Size = new Size(800, 600);
-        this.ResumeLayout(false);
+        // 
+        lblStatus.Location = new Point(20, 560);
+        lblStatus.Name = "lblStatus";
+        lblStatus.Size = new Size(740, 25);
+        lblStatus.TabIndex = 3;
+        lblStatus.Text = "Double-click en fila para editar precio de venta.";
+        // 
+        // UCInventory
+        // 
+        Controls.Add(btnRefresh);
+        Controls.Add(btnAdd);
+        Controls.Add(dgvProducts);
+        Controls.Add(lblStatus);
+        Name = "UCInventory";
+        Size = new Size(1391, 600);
+        ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+        ResumeLayout(false);
     }
 
     private void BtnRefresh_Click(object? sender, EventArgs e)

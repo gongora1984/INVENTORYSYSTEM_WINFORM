@@ -12,6 +12,17 @@ public class UCDailySales : UserControl
     private Button btnLoad;
     private DataGridView dgvOrders;
     private DataGridView dgvDetails;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+    private Label lblD;
+    private Label lblO;
+    private Label lblI;
     private Label lblGrandTotal;
 
     public UCDailySales(IInventoryService inventoryService)
@@ -23,61 +34,175 @@ public class UCDailySales : UserControl
 
     private void InitializeComponent()
     {
-        this.dtpDate = new DateTimePicker();
-        this.btnLoad = new Button();
-        this.dgvOrders = new DataGridView();
-        this.dgvDetails = new DataGridView();
-        this.lblGrandTotal = new Label();
-
-        this.SuspendLayout();
-
-        var lblD = new Label { Text = "Seleccionar Fecha:", Location = new Point(20, 20), AutoSize = true };
-        dtpDate.Location = new Point(160, 18);
-        dtpDate.Size = new Size(150, 25);
+        dtpDate = new DateTimePicker();
+        btnLoad = new Button();
+        dgvOrders = new DataGridView();
+        dgvDetails = new DataGridView();
+        lblGrandTotal = new Label();
+        lblD = new Label();
+        lblO = new Label();
+        lblI = new Label();
+        dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+        dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+        ((System.ComponentModel.ISupportInitialize)dgvOrders).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)dgvDetails).BeginInit();
+        SuspendLayout();
+        // 
+        // dtpDate
+        // 
         dtpDate.Format = DateTimePickerFormat.Short;
-
-        btnLoad.Text = "Cargar Reporte";
+        dtpDate.Location = new Point(160, 18);
+        dtpDate.Name = "dtpDate";
+        dtpDate.Size = new Size(150, 27);
+        dtpDate.TabIndex = 1;
+        // 
+        // btnLoad
+        // 
         btnLoad.Location = new Point(320, 15);
+        btnLoad.Name = "btnLoad";
         btnLoad.Size = new Size(120, 30);
+        btnLoad.TabIndex = 2;
+        btnLoad.Text = "Cargar Reporte";
         btnLoad.Click += BtnLoad_Click;
-
-        // Orders List
-        var lblO = new Label { Text = "Ordenes:", Location = new Point(20, 60), AutoSize = true, Font = new Font("Segoe UI", 10F, FontStyle.Bold) };
-        dgvOrders.Location = new Point(20, 85);
-        dgvOrders.Size = new Size(740, 200);
+        // 
+        // dgvOrders
+        // 
         dgvOrders.AllowUserToAddRows = false;
-        dgvOrders.ReadOnly = true;
-        dgvOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dgvOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        dgvOrders.Columns.Add("OrderNumber", "Numero de Orden");
-        dgvOrders.Columns.Add("Time", "Hora");
-        dgvOrders.Columns.Add("Items", "Productos");
-        dgvOrders.Columns.Add("Total", "Total");
+        dgvOrders.BackgroundColor = Color.White;
+        dgvOrders.ColumnHeadersHeight = 29;
+        dgvOrders.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+        dgvOrders.Location = new Point(20, 85);
+        dgvOrders.Name = "dgvOrders";
+        dgvOrders.ReadOnly = true;
+        dgvOrders.RowHeadersWidth = 51;
+        dgvOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dgvOrders.Size = new Size(1350, 200);
+        dgvOrders.TabIndex = 4;
         dgvOrders.SelectionChanged += DgvOrders_SelectionChanged;
-
-        // Details List
-        var lblI = new Label { Text = "Detalles de la Orden:", Location = new Point(20, 300), AutoSize = true, Font = new Font("Segoe UI", 10F, FontStyle.Bold) };
-        dgvDetails.Location = new Point(20, 325);
-        dgvDetails.Size = new Size(740, 200);
+        // 
+        // dgvDetails
+        // 
         dgvDetails.AllowUserToAddRows = false;
-        dgvDetails.ReadOnly = true;
         dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        dgvDetails.Columns.Add("Product", "Producto");
-        dgvDetails.Columns.Add("Price", "Precio");
-        dgvDetails.Columns.Add("Qty", "Cantidad");
-        dgvDetails.Columns.Add("Subtotal", "Subtotal");
-
-        lblGrandTotal.Text = "Total: $0.00";
-        lblGrandTotal.Location = new Point(550, 540);
-        lblGrandTotal.Size = new Size(200, 30);
+        dgvDetails.BackgroundColor = Color.White;
+        dgvDetails.ColumnHeadersHeight = 29;
+        dgvDetails.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8 });
+        dgvDetails.Location = new Point(20, 325);
+        dgvDetails.Name = "dgvDetails";
+        dgvDetails.ReadOnly = true;
+        dgvDetails.RowHeadersWidth = 51;
+        dgvDetails.Size = new Size(1350, 200);
+        dgvDetails.TabIndex = 6;
+        // 
+        // lblGrandTotal
+        // 
         lblGrandTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+        lblGrandTotal.Location = new Point(550, 540);
+        lblGrandTotal.Name = "lblGrandTotal";
+        lblGrandTotal.Size = new Size(200, 30);
+        lblGrandTotal.TabIndex = 7;
+        lblGrandTotal.Text = "Total: $0.00";
         lblGrandTotal.TextAlign = ContentAlignment.TopRight;
-
-        this.Controls.AddRange(new Control[] { lblD, dtpDate, btnLoad, lblO, dgvOrders, lblI, dgvDetails, lblGrandTotal });
-        this.Name = "UCDailySales";
-        this.Size = new Size(800, 600);
-        this.ResumeLayout(false);
-        this.PerformLayout();
+        // 
+        // lblD
+        // 
+        lblD.Location = new Point(0, 0);
+        lblD.Name = "lblD";
+        lblD.Size = new Size(100, 23);
+        lblD.TabIndex = 0;
+        // 
+        // lblO
+        // 
+        lblO.Location = new Point(0, 0);
+        lblO.Name = "lblO";
+        lblO.Size = new Size(100, 23);
+        lblO.TabIndex = 3;
+        // 
+        // lblI
+        // 
+        lblI.Location = new Point(0, 0);
+        lblI.Name = "lblI";
+        lblI.Size = new Size(100, 23);
+        lblI.TabIndex = 5;
+        // 
+        // dataGridViewTextBoxColumn1
+        // 
+        dataGridViewTextBoxColumn1.HeaderText = "Numero de Orden";
+        dataGridViewTextBoxColumn1.MinimumWidth = 6;
+        dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+        dataGridViewTextBoxColumn1.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn2
+        // 
+        dataGridViewTextBoxColumn2.HeaderText = "Hora";
+        dataGridViewTextBoxColumn2.MinimumWidth = 6;
+        dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+        dataGridViewTextBoxColumn2.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn3
+        // 
+        dataGridViewTextBoxColumn3.HeaderText = "Productos";
+        dataGridViewTextBoxColumn3.MinimumWidth = 6;
+        dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+        dataGridViewTextBoxColumn3.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn4
+        // 
+        dataGridViewTextBoxColumn4.HeaderText = "Total";
+        dataGridViewTextBoxColumn4.MinimumWidth = 6;
+        dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+        dataGridViewTextBoxColumn4.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn5
+        // 
+        dataGridViewTextBoxColumn5.HeaderText = "Producto";
+        dataGridViewTextBoxColumn5.MinimumWidth = 6;
+        dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+        dataGridViewTextBoxColumn5.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn6
+        // 
+        dataGridViewTextBoxColumn6.HeaderText = "Precio";
+        dataGridViewTextBoxColumn6.MinimumWidth = 6;
+        dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+        dataGridViewTextBoxColumn6.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn7
+        // 
+        dataGridViewTextBoxColumn7.HeaderText = "Cantidad";
+        dataGridViewTextBoxColumn7.MinimumWidth = 6;
+        dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+        dataGridViewTextBoxColumn7.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn8
+        // 
+        dataGridViewTextBoxColumn8.HeaderText = "Subtotal";
+        dataGridViewTextBoxColumn8.MinimumWidth = 6;
+        dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+        dataGridViewTextBoxColumn8.ReadOnly = true;
+        // 
+        // UCDailySales
+        // 
+        Controls.Add(lblD);
+        Controls.Add(dtpDate);
+        Controls.Add(btnLoad);
+        Controls.Add(lblO);
+        Controls.Add(dgvOrders);
+        Controls.Add(lblI);
+        Controls.Add(dgvDetails);
+        Controls.Add(lblGrandTotal);
+        Name = "UCDailySales";
+        Size = new Size(1415, 600);
+        ((System.ComponentModel.ISupportInitialize)dgvOrders).EndInit();
+        ((System.ComponentModel.ISupportInitialize)dgvDetails).EndInit();
+        ResumeLayout(false);
     }
 
     private void BtnLoad_Click(object? sender, EventArgs e)
