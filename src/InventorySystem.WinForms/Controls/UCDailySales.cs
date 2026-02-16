@@ -37,19 +37,19 @@ public class UCDailySales : UserControl
         dtpDate = new DateTimePicker();
         btnLoad = new Button();
         dgvOrders = new DataGridView();
-        dgvDetails = new DataGridView();
-        lblGrandTotal = new Label();
-        lblD = new Label();
-        lblO = new Label();
-        lblI = new Label();
         dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+        dgvDetails = new DataGridView();
         dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
         dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+        lblGrandTotal = new Label();
+        lblD = new Label();
+        lblO = new Label();
+        lblI = new Label();
         ((System.ComponentModel.ISupportInitialize)dgvOrders).BeginInit();
         ((System.ComponentModel.ISupportInitialize)dgvDetails).BeginInit();
         SuspendLayout();
@@ -87,6 +87,34 @@ public class UCDailySales : UserControl
         dgvOrders.TabIndex = 4;
         dgvOrders.SelectionChanged += DgvOrders_SelectionChanged;
         // 
+        // dataGridViewTextBoxColumn1
+        // 
+        dataGridViewTextBoxColumn1.HeaderText = "Numero de Orden";
+        dataGridViewTextBoxColumn1.MinimumWidth = 6;
+        dataGridViewTextBoxColumn1.Name = "OrderNumber";
+        dataGridViewTextBoxColumn1.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn2
+        // 
+        dataGridViewTextBoxColumn2.HeaderText = "Hora";
+        dataGridViewTextBoxColumn2.MinimumWidth = 6;
+        dataGridViewTextBoxColumn2.Name = "Time";
+        dataGridViewTextBoxColumn2.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn3
+        // 
+        dataGridViewTextBoxColumn3.HeaderText = "Productos";
+        dataGridViewTextBoxColumn3.MinimumWidth = 6;
+        dataGridViewTextBoxColumn3.Name = "Items";
+        dataGridViewTextBoxColumn3.ReadOnly = true;
+        // 
+        // dataGridViewTextBoxColumn4
+        // 
+        dataGridViewTextBoxColumn4.HeaderText = "Total";
+        dataGridViewTextBoxColumn4.MinimumWidth = 6;
+        dataGridViewTextBoxColumn4.Name = "Total";
+        dataGridViewTextBoxColumn4.ReadOnly = true;
+        // 
         // dgvDetails
         // 
         dgvDetails.AllowUserToAddRows = false;
@@ -100,65 +128,6 @@ public class UCDailySales : UserControl
         dgvDetails.RowHeadersWidth = 51;
         dgvDetails.Size = new Size(1350, 200);
         dgvDetails.TabIndex = 6;
-        // 
-        // lblGrandTotal
-        // 
-        lblGrandTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-        lblGrandTotal.Location = new Point(550, 540);
-        lblGrandTotal.Name = "lblGrandTotal";
-        lblGrandTotal.Size = new Size(200, 30);
-        lblGrandTotal.TabIndex = 7;
-        lblGrandTotal.Text = "Total: $0.00";
-        lblGrandTotal.TextAlign = ContentAlignment.TopRight;
-        // 
-        // lblD
-        // 
-        lblD.Location = new Point(0, 0);
-        lblD.Name = "lblD";
-        lblD.Size = new Size(100, 23);
-        lblD.TabIndex = 0;
-        // 
-        // lblO
-        // 
-        lblO.Location = new Point(0, 0);
-        lblO.Name = "lblO";
-        lblO.Size = new Size(100, 23);
-        lblO.TabIndex = 3;
-        // 
-        // lblI
-        // 
-        lblI.Location = new Point(0, 0);
-        lblI.Name = "lblI";
-        lblI.Size = new Size(100, 23);
-        lblI.TabIndex = 5;
-        // 
-        // dataGridViewTextBoxColumn1
-        // 
-        dataGridViewTextBoxColumn1.HeaderText = "Numero de Orden";
-        dataGridViewTextBoxColumn1.MinimumWidth = 6;
-        dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-        dataGridViewTextBoxColumn1.ReadOnly = true;
-        // 
-        // dataGridViewTextBoxColumn2
-        // 
-        dataGridViewTextBoxColumn2.HeaderText = "Hora";
-        dataGridViewTextBoxColumn2.MinimumWidth = 6;
-        dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-        dataGridViewTextBoxColumn2.ReadOnly = true;
-        // 
-        // dataGridViewTextBoxColumn3
-        // 
-        dataGridViewTextBoxColumn3.HeaderText = "Productos";
-        dataGridViewTextBoxColumn3.MinimumWidth = 6;
-        dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-        dataGridViewTextBoxColumn3.ReadOnly = true;
-        // 
-        // dataGridViewTextBoxColumn4
-        // 
-        dataGridViewTextBoxColumn4.HeaderText = "Total";
-        dataGridViewTextBoxColumn4.MinimumWidth = 6;
-        dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-        dataGridViewTextBoxColumn4.ReadOnly = true;
         // 
         // dataGridViewTextBoxColumn5
         // 
@@ -187,6 +156,37 @@ public class UCDailySales : UserControl
         dataGridViewTextBoxColumn8.MinimumWidth = 6;
         dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
         dataGridViewTextBoxColumn8.ReadOnly = true;
+        // 
+        // lblGrandTotal
+        // 
+        lblGrandTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+        lblGrandTotal.Location = new Point(1170, 545);
+        lblGrandTotal.Name = "lblGrandTotal";
+        lblGrandTotal.Size = new Size(200, 30);
+        lblGrandTotal.TabIndex = 7;
+        lblGrandTotal.Text = "Total: $0.00";
+        lblGrandTotal.TextAlign = ContentAlignment.TopRight;
+        // 
+        // lblD
+        // 
+        lblD.Location = new Point(0, 0);
+        lblD.Name = "lblD";
+        lblD.Size = new Size(100, 23);
+        lblD.TabIndex = 0;
+        // 
+        // lblO
+        // 
+        lblO.Location = new Point(0, 0);
+        lblO.Name = "lblO";
+        lblO.Size = new Size(100, 23);
+        lblO.TabIndex = 3;
+        // 
+        // lblI
+        // 
+        lblI.Location = new Point(0, 0);
+        lblI.Name = "lblI";
+        lblI.Size = new Size(100, 23);
+        lblI.TabIndex = 5;
         // 
         // UCDailySales
         // 
